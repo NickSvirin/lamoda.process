@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Процесс «Доставка с примеркой» · Lamoda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800;900&family=Onest:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0c08;--bg2:#13150d;--surface:#15170f;--surface2:#1c1f15;
+  --line:#2a2e20;--lime:#c6f135;--lime-dim:#9bc41f;--ink:#f4f6ec;
+  --muted:#9aa085;--muted2:#6f7560;--pain:#ff5a4d;--pain-bg:#2a1512;--warn:#ffb020;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'Onest',sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;min-height:100vh}
+.grain{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background:radial-gradient(800px 500px at 88% -8%,rgba(198,241,53,.10),transparent 60%)}
+.wrap{position:relative;z-index:1;max-width:1240px;margin:0 auto;padding:54px 28px 70px}
+.topbar{display:flex;align-items:center;gap:12px;margin-bottom:40px}
+.logo{font-family:'Unbounded';font-weight:900;font-size:15px}
+.logo b{color:var(--lime)}
+.pill{font-family:'JetBrains Mono';font-size:10px;border:1px solid var(--line);padding:4px 9px;border-radius:6px;color:var(--muted);letter-spacing:.1em}
+.tag{display:inline-flex;align-items:center;gap:7px;font-family:'JetBrains Mono';font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);border:1px solid var(--line);border-radius:100px;padding:6px 13px;background:rgba(198,241,53,.04)}
+.tag .dot{width:6px;height:6px;border-radius:50%;background:var(--lime)}
+h1{font-family:'Unbounded';font-weight:800;font-size:clamp(28px,4.6vw,48px);letter-spacing:-.02em;margin:18px 0 10px;line-height:1.04}
+.sub{color:var(--muted);font-size:17px;max-width:780px;margin-bottom:36px}
+
+.flow{display:flex;gap:0;align-items:stretch;overflow-x:auto;padding:6px 2px 18px;-webkit-overflow-scrolling:touch}
+.flow::-webkit-scrollbar{height:9px}
+.flow::-webkit-scrollbar-thumb{background:var(--line);border-radius:10px}
+.fstep{flex:none;width:185px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px 17px;position:relative;box-shadow:0 6px 20px rgba(0,0,0,.3)}
+.fstep.warn{border-color:var(--pain);background:linear-gradient(160deg,#1f1310,var(--surface))}
+.fstep .fn{font-family:'JetBrains Mono';font-size:11px;color:var(--lime);letter-spacing:.08em;margin-bottom:10px}
+.fstep.warn .fn{color:var(--pain)}
+.fstep .ft{font-size:15px;font-weight:600;line-height:1.3}
+.fstep .fm{font-size:12px;color:var(--muted);margin-top:9px;line-height:1.35}
+.farrow{flex:none;width:36px;display:flex;align-items:center;justify-content:center;color:var(--muted2);font-size:20px}
+
+.branches{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.b{display:flex;align-items:center;gap:14px;background:var(--bg2);border:1px dashed var(--line);border-radius:14px;padding:14px 20px;flex:1;min-width:240px}
+.b .bv{font-family:'Unbounded';font-weight:800;font-size:26px;color:var(--warn);line-height:1}
+.b .bl{font-size:13.5px;color:var(--muted);line-height:1.3}
+
+.section{margin-top:46px}
+.section h2{font-family:'Unbounded';font-weight:700;font-size:24px;letter-spacing:-.01em;margin-bottom:18px}
+.legrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.leg{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px 26px}
+.leg.warn{border-left:3px solid var(--pain)}
+.leg .lab{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.leg.warn .lab{color:var(--pain)}
+.leg .lab.ok{color:var(--lime)}
+.leg h3{font-family:'Unbounded';font-weight:700;font-size:17px;margin-bottom:10px}
+.leg p{font-size:14px;color:#dfe3d2;line-height:1.55}
+.note{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:20px 24px;margin-top:18px;font-size:14.5px;color:var(--muted);line-height:1.6}
+.note b{color:var(--lime)}
+.foot{margin-top:36px;font-family:'JetBrains Mono';font-size:12px;color:var(--muted2);line-height:1.7}
+@media(max-width:820px){.legrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="wrap">
+  <h1>Процесс «Доставка с примеркой»</h1>
+  <p class="sub">Полный путь от формирования маршрута на транзитном складе до возврата отказов вечером. Красным выделены два шага, которые создают основные потери эффективности канала.</p>
+
+  <div class="flow">
+    <div class="fstep"><div class="fn">07:00</div><div class="ft">Формирование маршрута</div><div class="fm">Транзитный склад, утро</div></div>
+    <div class="farrow">›</div>
+    <div class="fstep"><div class="fn">08:00</div><div class="ft">Загрузка автомобиля</div><div class="fm">40–50 заказов, корпоративное авто</div></div>
+    <div class="farrow">›</div>
+    <div class="fstep warn"><div class="fn">⚠ шаг потерь</div><div class="ft">Звонок за 30 минут</div><div class="fm">Согласование примерки — слишком поздно для корректировки дня</div></div>
+    <div class="farrow">›</div>
+    <div class="fstep"><div class="fn">в течение дня</div><div class="ft">Доставка</div><div class="fm">Курьер приезжает к клиенту</div></div>
+    <div class="farrow">›</div>
+    <div class="fstep"><div class="fn">15 минут</div><div class="ft">Примерка</div><div class="fm">Клиент меряет вещи при курьере</div></div>
+    <div class="farrow">›</div>
+    <div class="fstep warn"><div class="fn">⚠ шаг потерь</div><div class="ft">Частичный выкуп</div><div class="fm">Около половины товаров возвращается после примерки</div></div>
+    <div class="farrow">›</div>
+    <div class="fstep"><div class="fn">19:00</div><div class="ft">Возврат на склад</div><div class="fm">Отказы и отмены вечером</div></div>
+  </div>
+
+  <div class="branches">
+    <div class="b"><span class="bv">~5%</span><span class="bl">переносы заказов<br>внутри дня</span></div>
+    <div class="b"><span class="bv">~10%</span><span class="bl">переносы заказов<br>на следующий день</span></div>
+    <div class="b"><span class="bv">~0,5%</span><span class="bl">отмена заказов<br>на маршруте</span></div>
+  </div>
+
+  <div class="note">
+    <b>Логистика канала:</b> заказы формируются заранее и выдаются курьеру утром на транзитном складе; доставка идёт на корпоративном автомобиле; вечером курьер возвращает на склад отмены и отказы клиентов. В среднем один курьер обслуживает 40–50 заказов в день в зависимости от плотности маршрута.
+  </div>
+
+  <div class="section">
+    <h2>Где процесс теряет эффективность</h2>
+    <div class="legrid">
+      <div class="leg warn">
+        <div class="lab">Шаг потерь №1</div>
+        <h3>Звонок за 30 минут</h3>
+        <p>Слот доставки выбирается заранее, на горизонте недели, а подтверждение приходит звонком всего за 30 минут до приезда. Планы клиента к этому моменту часто меняются, перестроить день уже поздно — заказ переносят или отменяют. Курьер выезжает впустую, маршрут рассыпается.</p>
+      </div>
+      <div class="leg warn">
+        <div class="lab">Шаг потерь №2</div>
+        <h3>Частичный выкуп после примерки</h3>
+        <p>Клиент не может заранее представить, как вещь сядет на его фигуру, и заказывает один артикул в нескольких размерах. После примерки около половины позиций возвращается. Курьер весь день возит «лишний» товар: лишний вес, дольше стоит у каждой двери, удвоенный объём вечернего возврата.</p>
+      </div>
+      <div class="leg">
+        <div class="lab ok">Сильная сторона</div>
+        <h3>Примерка дома</h3>
+        <p>Возможность примерить вещи дома без похода в магазин — ключевая ценность сервиса и причина, по которой им пользуются около 80% клиентов в одежде и обуви. Эту сильную сторону важно сохранить при любых изменениях.</p>
+      </div>
+      <div class="leg">
+        <div class="lab ok">Сильная сторона</div>
+        <h3>Возврат на месте</h3>
+        <p>Отказ оформляется прямо при курьере, без бюрократии и поездок в пункт выдачи. Для клиента это удобно и снижает порог заказа — но именно эта лёгкость отчасти и провоцирует заказ «с запасом».</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    Подробный путь клиента — в отдельной карте. Персона — в отдельном файле.
+  </div>
+</div>
+</body>
+</html>
